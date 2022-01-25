@@ -1,0 +1,6 @@
+crud - spring boot
+dependencias
+-> spring web
+-> spring data JPA
+-> Mysql Driver
+-> Lombok
