@@ -4,3 +4,5 @@ dependencias
 -> spring data JPA
 -> Mysql Driver
 -> Lombok
+
+https://www.youtube.com/watch?v=aCZmPgBHc88&list=PL4YAGAvVCsm6Tm_vNDHzwEgg-PdvTM6m3&index=2&t=1296s 19:28
