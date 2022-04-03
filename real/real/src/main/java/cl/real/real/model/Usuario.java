@@ -13,110 +13,116 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Schema(description = "Llave primaria del usuario")
-    @Column(name = "usu_id")
-    private Integer usu_id;
+    @Column(name = "id_usuario")
+    private Integer idUsuario;
 
     @NotNull
     @Schema(description = "Nombre de usuario")
-    @Column(name = "usu_nombre")
-    private String usu_nombre;
+    @Column(name = "nombre")
+    private String nombre;
 
     @NotNull
     @Schema(description = "Apellido del usuario")
-    @Column(name = "usu_apellido")
-    private String usu_apellido;
+    @Column(name = "apellido")
+    private String apellido;
 
     @NotNull
     @Schema(description = "Estado, activo a desactivado de un usuario")
-    @Column(name = "usu_estado")
-    private Boolean usu_estado;
+    @Column(name = "estado")
+    private Boolean estado;
 
     @NotNull
     @Schema(description = "fecha de creacion de un usuario")
-    @Column(name = "usu_creacion")
-    private Date usu_creacion;
+    @Column(name = "creacion")
+    private Date creacion;
 
     @NotNull
     @Schema(description = "fecha de ultima modificacion de un usuario")
-    @Column(name = "usu_modificacion")
-    private Date usu_modificacion;
+    @Column(name = "modificacion")
+    private Date modificacion;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "deu_id", referencedColumnName = "deu_id")
+    @JoinColumn(name = "id_dusuario", referencedColumnName = "id_dusuario")
     private DetalleUsuario detalleUsuario;
 
+    /* modificacion de estructura de entidades, obj: simplificar 31/03/2022
     @OneToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "perf_usu",
-     joinColumns = { @JoinColumn(name = "usu_id", referencedColumnName = "usu_id") },
-     inverseJoinColumns = {@JoinColumn(name = "perfil_id", referencedColumnName = "perfil_id") })
+     joinColumns = { @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario") },
+     inverseJoinColumns = {@JoinColumn(name = "id_perfil", referencedColumnName = "id_perfil") })
+    private Perfil perfil;
+    */
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Perfil perfil;
 
     public Usuario() {
     }
 
-    public Usuario(Integer usu_id) {
-        this.usu_id = usu_id;
+    public Usuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public Usuario(String usu_nombre) {
-        this.usu_nombre = usu_nombre;
+    public Usuario(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 
-    public Usuario(Integer usu_id, String usu_nombre, String usu_apellido, Boolean usu_estado, Date usu_creacion, Date usu_modificacion) {
-        this.usu_id = usu_id;
-        this.usu_nombre = usu_nombre;
-        this.usu_apellido = usu_apellido;
-        this.usu_estado = usu_estado;
-        this.usu_creacion = usu_creacion;
-        this.usu_modificacion = usu_modificacion;
+    public Usuario(Integer idUsuario, String nombre, String apellido, Boolean estado, Date creacion, Date modificacion) {
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.estado = estado;
+        this.creacion = creacion;
+        this.modificacion = modificacion;
     }
 
-    public Integer getUsu_id() {
-        return usu_id;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setUsu_id(Integer usu_id) {
-        this.usu_id = usu_id;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getUsu_nombre() {
-        return usu_nombre;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setUsu_nombre(String usu_nombre) {
-        this.usu_nombre = usu_nombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getUsu_apellido() {
-        return usu_apellido;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setUsu_apellido(String usu_apellido) {
-        this.usu_apellido = usu_apellido;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public Boolean getUsu_estado() {
-        return usu_estado;
+    public Boolean getEstado() {
+        return estado;
     }
 
-    public void setUsu_estado(Boolean usu_estado) {
-        this.usu_estado = usu_estado;
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
     }
 
-    public Date getUsu_creacion() {
-        return usu_creacion;
+    public Date getCreacion() {
+        return creacion;
     }
 
-    public void setUsu_creacion(Date usu_creacion) {
-        this.usu_creacion = usu_creacion;
+    public void setCreacion(Date creacion) {
+        this.creacion = creacion;
     }
 
-    public Date getUsu_modificacion() {
-        return usu_modificacion;
+    public Date getModificacion() {
+        return modificacion;
     }
 
-    public void setUsu_modificacion(Date usu_modificacion) {
-        this.usu_modificacion = usu_modificacion;
+    public void setModificacion(Date modificacion) {
+        this.modificacion = modificacion;
     }
 
     public DetalleUsuario getDetalleUsuario() {
@@ -126,4 +132,5 @@ public class Usuario {
     public void setDetalleUsuario(DetalleUsuario detalleUsuario) {
         this.detalleUsuario = detalleUsuario;
     }
+
 }

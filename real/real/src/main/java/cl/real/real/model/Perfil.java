@@ -32,15 +32,10 @@ public class Perfil {
     @Column(name = "creacion")
     private Date creacion;
 
+    /* modificacion de estructura de entidades 31/03/2022
     @OneToOne(mappedBy = "perfil")
     private Usuario usuario;
-
-
-    @ManyToMany
-    @JoinTable(name = "perfil_roles",
-    joinColumns = @JoinColumn(name = "per_id", referencedColumnName = "per_id"),
-    inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "rol_id"))
-    private List<Rol> roles;
+    */
 
     public Perfil() {
     }
@@ -53,12 +48,11 @@ public class Perfil {
         this.idPerfil = idPerfil;
     }
 
-    public Perfil(Integer idPerfil, String nombre, Boolean estado, Date creacion, Usuario usuario) {
+    public Perfil(Integer idPerfil, String nombre, Boolean estado, Date creacion) {
         this.idPerfil = idPerfil;
         this.nombre = nombre;
         this.estado = estado;
         this.creacion = creacion;
-        this.usuario = usuario;
     }
 
     public Integer getIdPerfil() {
@@ -93,19 +87,4 @@ public class Perfil {
         this.creacion = creacion;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public List<Rol> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Rol> roles) {
-        this.roles = roles;
-    }
 }
